@@ -8,7 +8,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //쉽게 테스트 코드 만드는 법 : ctrl+shift+T
+
+    //기존에는 회원 서비스가 메모리 회원 리포지토리를 직접 생성하게 했다.
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //위 코드를 아래의 코드로 회원 서비스 코드를 DI 가능하게 변경한다.
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     /**
      * 회원 가입
