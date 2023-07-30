@@ -3,10 +3,13 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     //쉽게 테스트 코드 만드는 법 : ctrl+shift+T
 
@@ -15,6 +18,7 @@ public class MemberService {
     //위 코드를 아래의 코드로 회원 서비스 코드를 DI 가능하게 변경한다.
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
